@@ -1,0 +1,32 @@
+.tile {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.description {
+  margin-bottom: 0.5em;
+}
+
+.due-date {
+  color: #888;
+}
+
+.status {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+.actions {
+  margin-top: 1em;
+}
+
+.actions button {
+  margin-right: 0.5em;
+}
