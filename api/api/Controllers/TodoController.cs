@@ -63,10 +63,21 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetToDoList([FromQuery] int page, [FromQuery] int pageSize = 10)
+        public IActionResult GetToDoList([FromQuery] int page, [FromQuery] int pageSize = 10, [FromQuery] bool sortByDueDate = false)
         {
+            IEnumerable<TodoItem> itemsToReturn;
+
+            if (sortByDueDate)
+            {
+                itemsToReturn = _todoList.OrderBy(item => DateTime.Parse(item.dueDate));
+            }
+            else
+            {
+                itemsToReturn = _todoList;
+            }
+
             var startIndex = page * pageSize;
-            var itemsToReturn = _todoList.Skip(startIndex).Take(pageSize);
+            itemsToReturn = itemsToReturn.Skip(startIndex).Take(pageSize);
 
             return Ok(itemsToReturn);
         }

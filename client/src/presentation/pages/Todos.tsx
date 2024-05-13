@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import TodoItem from "../components/TodoItem";
 import useGetTodos from "../hooks/useGetTodos";
 import "../css/Todos.css";
 
 const Todos = () => {
   const [page, setPage] = useState(0);
-  const query = useGetTodos(page);
+  const [sortByDueDate, setSortByDueDate] = useReducer((prev) => !prev, false);
+  const query = useGetTodos(page, sortByDueDate);
 
   const handleNext = () => {
     if (query?.data && query.data.data.length < 10) return;
@@ -19,12 +20,17 @@ const Todos = () => {
 
   return (
     <div className="App">
-      <button className="button" onClick={handlePrev}>
-        Prev
-      </button>
-      <button className="button" onClick={handleNext}>
-        Next
-      </button>
+      <div className="buttons-wrapper">
+        <button className="button" onClick={handlePrev}>
+          Prev
+        </button>
+        <button className="button" onClick={setSortByDueDate}>
+          {sortByDueDate ? "Let's use default sort" : "Let's sort by due date"}
+        </button>
+        <button className="button" onClick={handleNext}>
+          Next
+        </button>
+      </div>
       {query.isLoading ? (
         <div>Loading...</div>
       ) : query.isError ? (

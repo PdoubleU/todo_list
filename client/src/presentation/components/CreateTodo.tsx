@@ -33,6 +33,7 @@ const CreateTodo = () => {
           placeholder="Title"
           onChange={handleInputChange}
           value={formData["title"]}
+          required
         />
       </div>
       <div className="input-container">
@@ -50,6 +51,7 @@ const CreateTodo = () => {
           name="dueDate"
           onChange={handleInputChange}
           value={formData["dueDate"]}
+          required
         />
       </div>
       <button type="submit" className="submit-button">

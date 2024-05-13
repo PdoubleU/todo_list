@@ -11,5 +11,5 @@
   - Run the application
 - Run the client
   - Open the `Client` folder in Visual Studio Code
-  - Run `npm install`
-  - Run `npm run dev`
+  - Run `yarn install`
+  - Run `yarn run dev`
